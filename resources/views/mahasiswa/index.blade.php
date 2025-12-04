@@ -7,12 +7,20 @@
 <body class="bg-gray-100">
 
 <div class="max-w-5xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-    <h2 class="text-2xl font-bold mb-6 text-blue-600">Data Mahasiswa</h2>
 
-    <a href="{{ route('mahasiswa.create') }}"
-       class="inline-block mb-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-       + Tambah Data
-    </a>
+    <!-- Baris 1: Judul kiri dan logo kanan -->
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold text-blue-600">Data Mahasiswa</h2>
+        <img src="{{ asset('assets/images/Frame_31.png') }}" alt="Logo" class="w-16 h-16">
+    </div>
+
+    <!-- Baris 2: Tombol +Tambah Data -->
+    <div class="mb-4">
+        <a href="{{ route('mahasiswa.create') }}"
+           class="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+           + Tambah Data
+        </a>
+    </div>
 
     @if(session('success'))
         <div class="mb-4 p-3 bg-green-100 text-green-700 rounded">
@@ -42,23 +50,19 @@
                         <td class="px-4 py-2 border">{{ $mhs->tanggal_lahir }}</td>
                         <td class="px-4 py-2 border">{{ $mhs->alamat }}</td>
                         <td class="px-4 py-2 border">
-
                             <a href="{{ route('mahasiswa.edit', $mhs->id) }}"
                                class="px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500">
                                 Edit
                             </a>
-
                             <form action="{{ route('mahasiswa.destroy', $mhs->id) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
-
                                 <button type="submit"
                                     onclick="return confirm('Yakin hapus?')"
                                     class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700">
                                     Hapus
                                 </button>
                             </form>
-
                         </td>
                     </tr>
                 @empty
@@ -72,6 +76,7 @@
         </table>
     </div>
 </div>
+
 
 </body>
 </html>

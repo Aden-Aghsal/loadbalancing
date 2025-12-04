@@ -1,4 +1,5 @@
 <?php
+header('X-Server-ID: AppServer-1');
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
