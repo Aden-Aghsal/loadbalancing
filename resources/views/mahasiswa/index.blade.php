@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Data Mahasiswa</title>
+    <link rel="icon" href="{{ asset('assets/images/Frame_32.png') }}" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
@@ -11,7 +12,7 @@
     <!-- Baris 1: Judul kiri dan logo kanan -->
     <div class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-bold text-blue-600">Data Mahasiswa</h2>
-        <img src="{{ asset('assets/images/Frame_31.png') }}" alt="Logo" class="w-16 h-16">
+        <img src="{{ asset('assets/images/Frame_31.png') }}" alt="Logo" class="w-20 h-20">
     </div>
 
     <!-- Baris 2: Tombol +Tambah Data -->
