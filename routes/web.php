@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\AuthController; // <--- Jangan lupa import ini
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,28 @@ use App\Http\Controllers\MahasiswaController;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/mahasiswa');
+// --- 1. GROUP GUEST: Hanya bisa diakses kalau BELUM login ---
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
+    Route::post('/login', [AuthController::class, 'authenticate'])->name('login.action');
 });
-Route::resource('mahasiswa', MahasiswaController::class);
 
+// --- 2. GROUP AUTH: Hanya bisa diakses kalau SUDAH login ---
+Route::middleware('auth')->group(function () {
+    
+    // Logout (Harus POST demi keamanan)
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Root langsung redirect ke dashboard
+    Route::get('/', function () {
+        return redirect('/mahasiswa');
+    });
+
+    // CRUD Mahasiswa sekarang aman (Protected)
+    Route::resource('mahasiswa', MahasiswaController::class);
+});
+
+// --- 3. Route Testing (Bebas akses untuk debug) ---
 Route::get('/test-env', function () {
     return [
         'env_DB_HOST' => env('DB_HOST'),
