@@ -81,6 +81,10 @@
                             </div>
                         </div>
                     </div>
+
+                    <div>
+                        <p class="disclaimer">Note: INI ADALAH <strong>SERVER 1</strong></p>
+                    </div>
                 </div>
 
                 <svg class="graphic" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
